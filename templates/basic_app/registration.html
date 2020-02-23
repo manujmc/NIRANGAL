@@ -1,0 +1,52 @@
+{% extends "basic_app/base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<script>
+$(document).ready(function() {
+    $('.datepicker').datepicker();
+});
+</script>
+{#    <style>#}
+{#    #id_date_of_birth{#}
+{#        type:date;#}
+{#    }#}
+{#    </style>#}
+  <div class="container">
+    <div class="jumbotron">
+      {% if registered %}
+        <h1>Thank you for registering!</h1>
+      {% else %}
+        <h1>Register Here</h1>
+        <h3>Just fill out the form.</h3>
+          <style>
+          input{
+              width: 500px;
+              height: 30px;
+              margin-top: 20px;
+              margin-bottom: 10px;
+          }
+          </style>
+
+        <form enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+            <table width="950px" cellspacing="10px">
+                {{ user_form }}
+                {{ profile_form }}
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Register"></td>
+        </tr>
+            </table>
+        </form>
+
+      {% endif %}
+
+    </div>
+
+  </div>
+
+{% endblock %}

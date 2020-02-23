@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>VIBGYOR MATCH MAKING</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/static/js/jquery-2.1.1.min.js"></script>
+
+<style>
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hideform {
+    display: none;
+}
+    .btn {
+
+    border-radius: 2px;
+    background-color:#F0E68C;
+
+    }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color:lightblue;
+    padding: 1px;
+    text-align: left;
+    color: black;
+
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 15%;
+    height: 500px; /* only for demonstration, should be removed */
+    background: #E8E8E8;
+    padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+article {
+    float: left;
+    padding: 20px;
+    width: 85%;
+    background-color: #f1f1f1;
+    height: 500px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 2px;
+    text-align: center;
+    color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+<h1 style="margin-left:10px">VIBGYOR MATCH MAKING</h1>
+<div style="padding-left:900px">
+</div>
+<div style="padding-left:900px;padding-top:10px">
+</div>
+    {% if user.is_authenticated %}
+            <h2>Welcome {{ user.username }}!</h2><li><a href="{% url 'basic_app:logout' %}">Logout</a></li>
+          {% else %}
+            <li><a class="navbar-link" href="{% url 'basic_app:user_login' %}">Login</a></li>
+    {% endif %}
+</header>
+
+<section>
+  <nav>
+      <br><br>
+
+    <ul style="margin-top:5px">
+        <li><a href="{% url "basic_app:index" %}"><h3>Home</h3></a></li>
+        <li><a href="{% url "member_creation" %}"><h3>Member Creation</h3></a></li>
+        <li><a href="{% url "view_clients" %}"><h3>View Clients</h3></a></li>
+        <li><a href="{% url "home" %}"><h3>Accounts</h3></a></li>
+        <li><a href="{% url "page" %}"><h3>Project Management</h3></a></li>
+        <li><a href="{% url "basic_app:contact_management" %}"><h3>Contact Management</h3></a></li>
+        <li><a href="{% url 'basic_app:personal_management' %}"><h3>Personal Management</h3></a></li>
+        <li><a href="{% url "basic_app:chatting" %}"><h3>Chatting</h3></a></li>
+        <li><a href="{% url "basic_app:user_roll" %}"><h3>User Roll</h3></a></li>
+        <li><a href="{% url "basic_app:settings" %}"><h3>Settings</h3></a></li>
+    </ul><br><br>
+  </nav>
+  <article>
+{% block content %}
+{% endblock %}
+
+  </article>
+</section>
+<br><br><br>
+<footer>
+  <p>Powered by Siegers</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Login :: Siegers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="User Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+<link href="/static/css/basepagestyle.css" rel='stylesheet' type='text/css' />
+<!--web-fonts-->
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<!--/web-fonts-->
+</head>
+<body>
+<!--User-Login-->
+<h1>User Login</h1>
+<div class="avtar">
+	<img src="/static/images/avtar.png" />
+</div>
+	<div class="login-form">
+		<p>New user?<a href="{% url 'basic_app:register' %}">Register here!</a></p>
+			<form method="post" action="{% url 'basic_app:user_login' %}">
+                {% csrf_token %}
+				<div class="form-text">
+{#                    <label for="username">Username:</label>#}
+					<input type="text" name="username" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}" >
+{#                    <label for="password">Password:</label>#}
+					<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+				</div>
+					<input type="submit"value="GO" name="">
+			</form>
+	</div>
+<!--/User-Login-->
+
+</body>
+</html>
